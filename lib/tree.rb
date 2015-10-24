@@ -12,4 +12,30 @@ class Tree
     end
   end
 
+  def include?(element)
+    if element == head.data
+      true
+    elsif element < head.data
+      head.leftlink.include?(element)
+    else
+      head.rightlink.include?(element)
+    end
+  end
+
+  def maximum
+    if head.rightlink.nil?
+      head.data
+    else
+      head.rightlink.maximum
+    end
+  end
+
+  def minimum
+    if head.leftlink.nil?
+      head.data
+    else
+      head.leftlink.minimum
+    end
+  end
+
 end

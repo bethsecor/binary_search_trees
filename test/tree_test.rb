@@ -16,4 +16,6 @@ class TreeTest < Minitest::Test
     assert_equal 5, tree.head.data
   end
 
+  # add more tests here
+
 end

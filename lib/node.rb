@@ -21,4 +21,33 @@ class Node
     end
   end
 
+  def include?(element)
+    if data == element
+      true
+    elsif element < data
+      return false if leftlink.nil?
+      leftlink.include?(element)
+    elsif element > data
+      return false if rightlink.nil?
+      rightlink.include?(element)
+    else
+      false
+    end
+  end
+
+  def maximum
+    if rightlink.nil?
+      data
+    else
+      rightlink.maximum
+    end
+  end
+
+  def minimum
+    if leftlink.nil?
+      data
+    else
+      leftlink.minimum
+    end
+  end
 end

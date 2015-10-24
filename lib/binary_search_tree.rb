@@ -20,31 +20,31 @@ require 'pry'
 class BinarySearchTree
   attr_reader :file_reader
   attr_writer :file_writer
+  attr_accessor :tree
 
   def initialize
     @reader = FileReader.new
     @writer = FileWriter.new
   end
 
-  def tree
-    data = @reader.read.split("\n")
-    tree = Tree.new
+  def tree(data)
+    @tree = Tree.new
     data.each do |element|
-      tree.push(element.to_i)
-    end # could create a push to tree class here?
-    tree
+      @tree.push(element.to_i)
+    end
+    @tree
   end
 
   def include?(element)
-
+    tree.include?(element)
   end
 
-  def sort_data_to_file
-    sorted_data = sorted_data_for_output(tree)
-    @writer.write(sorted_data)
-  end
-
-  def sorted_data_for_output(tree)
+  def sort_file_data_to_file
+    file_data = @reader.read.split("\n")
+    file_tree = tree(file_data)
+    sorted_file_data = sort(file_tree)
+    sorted_file_data.join("\n")
+    @writer.write(sorted_file_data)
   end
 
   def sort
@@ -57,6 +57,7 @@ class BinarySearchTree
   end
 
   def maximum
+    tree.maximum
   end
 
   def minimum
@@ -64,4 +65,7 @@ class BinarySearchTree
 end
 
 bst = BinarySearchTree.new
-# puts bst.tree.inspect
+# bst.sort_file_data_to_file
+numbers = [87,99,54,43,66,77]
+bst_numbers = bst.tree(numbers)
+# binding.pry

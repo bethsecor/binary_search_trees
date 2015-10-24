@@ -1,2 +1,0 @@
-Make sure you can implement linked list first
-- append, prepend, pop, 
