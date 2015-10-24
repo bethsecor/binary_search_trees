@@ -30,8 +30,8 @@ class BinarySearchTree
     data = @reader.read.split("\n")
     tree = Tree.new
     data.each do |element|
-      tree.push(element)
-    end
+      tree.push(element.to_i)
+    end # could create a push to tree class here?
     tree
   end
 
