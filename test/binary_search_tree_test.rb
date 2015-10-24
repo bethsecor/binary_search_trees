@@ -8,7 +8,7 @@ require_relative '../lib/binary_search_tree'
 class BinarySearchTreeTest < Minitest::Test
   def test_binary_search_tree_methods_exist
     bst = BinarySearchTree.new
-    assert bst.respond_to?(:tree)
+    assert bst.respond_to?(:build_tree)
     assert bst.respond_to?(:include?)
     assert bst.respond_to?(:sort)
     assert bst.respond_to?(:sort_file_data_to_file)
@@ -26,58 +26,58 @@ class BinarySearchTreeTest < Minitest::Test
   def test_include_head?
     bst = BinarySearchTree.new
     numbers = [87]
-    bst_numbers = bst.tree(numbers)
-    assert bst_numbers.include?(87)
+    bst.build_tree(numbers)
+    assert bst.include?(87)
   end
 
   def test_include_children?
     bst = BinarySearchTree.new
     numbers = [87, 54, 99]
-    bst_numbers = bst.tree(numbers)
-    assert bst_numbers.include?(87)
-    assert bst_numbers.include?(54)
-    assert bst_numbers.include?(99)
+    bst.build_tree(numbers)
+    assert bst.include?(87)
+    assert bst.include?(54)
+    assert bst.include?(99)
   end
 
   def test_include_children_of_children?
     bst = BinarySearchTree.new
     numbers = [87, 54, 99, 43, 120, 66, 101]
-    bst_numbers = bst.tree(numbers)
-    assert bst_numbers.include?(87)
-    assert bst_numbers.include?(54)
-    assert bst_numbers.include?(99)
-    assert bst_numbers.include?(43)
-    assert bst_numbers.include?(66)
-    assert bst_numbers.include?(101)
-    assert bst_numbers.include?(120)
+    bst.build_tree(numbers)
+    assert bst.include?(87)
+    assert bst.include?(54)
+    assert bst.include?(99)
+    assert bst.include?(43)
+    assert bst.include?(66)
+    assert bst.include?(101)
+    assert bst.include?(120)
   end
 
   def test_maximum_single_digits
     bst = BinarySearchTree.new
     numbers = [3, 6, 4, 5, 8, 9]
-    bst_numbers = bst.tree(numbers)
-    assert_equal 9, bst_numbers.maximum
+    bst.build_tree(numbers)
+    assert_equal 9, bst.maximum
   end
 
   def test_maximum_big_numbers
     bst = BinarySearchTree.new
     numbers = [87, 54, 99, 43, 120, 66, 101]
-    bst_numbers = bst.tree(numbers)
-    assert_equal 120, bst_numbers.maximum
+    bst.build_tree(numbers)
+    assert_equal 120, bst.maximum
   end
 
   def test_minimum_single_digits
     bst = BinarySearchTree.new
     numbers = [3, 6, 4, 5, 8, 9]
-    bst_numbers = bst.tree(numbers)
-    assert_equal 3, bst_numbers.minimum
+    bst.build_tree(numbers)
+    assert_equal 3, bst.minimum
   end
 
   def test_minimum_big_numbers
     bst = BinarySearchTree.new
     numbers = [87, 54, 99, 43, 120, 66, 101]
-    bst_numbers = bst.tree(numbers)
-    assert_equal 43, bst_numbers.minimum
+    bst.build_tree(numbers)
+    assert_equal 43, bst.minimum
   end
 
 end

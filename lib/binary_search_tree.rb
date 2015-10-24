@@ -27,7 +27,7 @@ class BinarySearchTree
     @writer = FileWriter.new
   end
 
-  def tree(data)
+  def build_tree(data)
     @tree = Tree.new
     data.each do |element|
       @tree.push(element.to_i)
@@ -36,7 +36,7 @@ class BinarySearchTree
   end
 
   def include?(element)
-    tree.include?(element)
+    @tree.include?(element)
   end
 
   def sort_file_data_to_file
@@ -57,15 +57,16 @@ class BinarySearchTree
   end
 
   def maximum
-    tree.maximum
+    @tree.maximum
   end
 
   def minimum
+    @tree.minimum
   end
 end
 
 bst = BinarySearchTree.new
 # bst.sort_file_data_to_file
 numbers = [87,99,54,43,66,77]
-bst_numbers = bst.tree(numbers)
+bst_numbers = bst.build_tree(numbers)
 # binding.pry
