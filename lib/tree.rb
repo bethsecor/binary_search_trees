@@ -1,4 +1,6 @@
-class List
+require './lib/node'
+
+class Tree
   attr_reader :head
 
   def push(data)

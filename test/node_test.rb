@@ -25,14 +25,28 @@ class NodeTest < Minitest::Test
     assert_equal "a", a_node.data
   end
 
-  def test_node_takes_in_data_0
-    a_node = Node.new(0)
-    assert_equal 0, a_node.data
+  def test_node_takes_in_data_numeric_string
+    a_node = Node.new("0")
+    assert_equal "0", a_node.data
   end
 
-  def test_node_takes_in_data_5
-    a_node = Node.new(5)
-    assert_equal 5, a_node.data
+  def test_node_takes_in_data_double_digit_string
+    a_node = Node.new("50")
+    assert_equal "50", a_node.data
+  end
+
+  def test_rightlinks_larger_node_to_smaller_node
+    node1 = Node.new("50")
+    node2 = Node.new("56")
+    node1.push(node2)
+    assert_equal "56", node1.rightlink.data
+  end
+
+  def test_leftlinks_smaller_node_to_larger_node
+    node1 = Node.new("43")
+    node2 = Node.new("24")
+    node1.push(node2)
+    assert_equal "24", node1.leftlink.data
   end
 
 end
