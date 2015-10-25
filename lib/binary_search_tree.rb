@@ -29,7 +29,7 @@ class BinarySearchTree
   def sort_file_data_to_file
     file_data = @reader.read.split("\n")
     file_tree = tree(file_data)
-    sorted_file_data = sort(file_tree)
+    sorted_file_data = file_tree.sort
     sorted_file_data.join("\n")
     @writer.write(sorted_file_data)
   end
