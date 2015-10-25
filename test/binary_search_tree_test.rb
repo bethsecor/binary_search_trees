@@ -12,7 +12,7 @@ class BinarySearchTreeTest < Minitest::Test
     assert bst.respond_to?(:include?)
     assert bst.respond_to?(:sort)
     assert bst.respond_to?(:sort_file_data_to_file)
-    assert bst.respond_to?(:insert)
+
     assert bst.respond_to?(:depth_of)
     assert bst.respond_to?(:maximum)
     assert bst.respond_to?(:minimum)
@@ -80,6 +80,13 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal 43, bst.minimum
   end
 
+  def test_depth_of_non_element
+    bst = BinarySearchTree.new
+    numbers = [3, 6, 4, 5, 8, 9]
+    bst.build_tree(numbers)
+    assert_equal nil, bst.depth_of(7)
+  end
+
   def test_depth_of_head
     bst = BinarySearchTree.new
     numbers = [3, 6, 4, 5, 8, 9]
@@ -110,6 +117,26 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal 3, bst.depth_of(9)
   end
 
+  def test_depth_of_level_four
+    bst = BinarySearchTree.new
+    numbers = [3, 6, 4, 5, 8, 9, 10]
+    bst.build_tree(numbers)
+    assert_equal 4, bst.depth_of(10)
+  end
+
+  def test_sort
+    bst = BinarySearchTree.new
+    numbers = [3, 6, 4, 5, 8, 9]
+    bst.build_tree(numbers)
+    assert_equal [3, 4, 5, 6, 8, 9], bst.sort
+  end
+
+  def test_sort_balanced_tree
+    bst = BinarySearchTree.new
+    numbers = [87, 54, 99, 43, 120, 66, 101]
+    bst.build_tree(numbers)
+    assert_equal [43, 54, 66, 87, 99, 101, 120], bst.sort
+  end
 
 
 end

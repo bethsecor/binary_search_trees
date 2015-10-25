@@ -7,18 +7,18 @@ class Node
     @data = data
   end
 
-  def push(node)
+  def insert(node)
     if data > node.data
       if leftlink.nil?
         @leftlink = node
       else
-        leftlink.push(node)
+        leftlink.insert(node)
       end
     elsif data < node.data
       if rightlink.nil?
         @rightlink = node
       else
-        rightlink.push(node)
+        rightlink.insert(node)
       end
     end
   end
@@ -35,6 +35,19 @@ class Node
     else
       false
     end
+  end
+
+  def sort(sorted_array)
+    return sorted_array if rightlink.nil? && leftlink.nil?
+    if rightlink
+      sorted_array.insert(sorted_array.index(data)+1,rightlink.data)
+      rightlink.sort(sorted_array)
+    end
+    if leftlink
+      sorted_array.insert(sorted_array.index(data),leftlink.data)
+      leftlink.sort(sorted_array)
+    end
+    sorted_array
   end
 
   def maximum
@@ -54,13 +67,15 @@ class Node
   end
 
   def depth_of(element, counter = 0)
+    return nil if !include?(element)
+
     counter += 1
 
     if element == data
       counter
     elsif element < data
       leftlink.depth_of(element, counter)
-    else # elsif element > data
+    else
       rightlink.depth_of(element, counter)
     end
   end

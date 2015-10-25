@@ -4,19 +4,6 @@ require './lib/file_reader'
 require './lib/file_writer'
 require 'pry'
 
-# numbers = [87,99,54,43,66,77]
-# # letters = ["c", "a", "f", "b", "g", "d"]
-# list = List.new
-# numbers.each do |num|
-#   list.push(num)
-# end
-#
-# puts numbers.to_s
-# puts list.inspect
-# puts list.head.rightlink.data
-# puts list.head.leftlink.leftlink.data
-
-
 class BinarySearchTree
   attr_reader :file_reader
   attr_writer :file_writer
@@ -30,7 +17,7 @@ class BinarySearchTree
   def build_tree(data)
     @tree = Tree.new
     data.each do |element|
-      @tree.push(element.to_i)
+      @tree.insert(element.to_i)
     end
     @tree
   end
@@ -48,9 +35,11 @@ class BinarySearchTree
   end
 
   def sort
+    @tree.sort
   end
 
-  def insert # YOU DID THIS. CONGRATS.
+  def insert(element)
+    @tree.insert(element.to_i)
   end
 
   def depth_of(element)

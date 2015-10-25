@@ -3,12 +3,12 @@ require './lib/node'
 class Tree
   attr_reader :head
 
-  def push(data)
+  def insert(data)
     node = Node.new(data)
     if head.nil?
       @head = node
     else
-      head.push(node)
+      head.insert(node)
     end
   end
 
@@ -20,6 +20,20 @@ class Tree
     else
       head.rightlink.include?(element)
     end
+  end
+
+  def sort(sorted_array = [])
+    sorted_array << head.data
+    return sorted_array if head.rightlink.nil? && head.leftlink.nil?
+    if head.rightlink
+      sorted_array.push(head.rightlink.data)
+      head.rightlink.sort(sorted_array)
+    end
+    if head.leftlink
+      sorted_array.unshift(head.leftlink.data)
+      head.leftlink.sort(sorted_array)
+    end
+    sorted_array
   end
 
   def maximum
