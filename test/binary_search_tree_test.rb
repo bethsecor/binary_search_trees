@@ -280,6 +280,20 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal nil, bst.depth_of(88)
   end
 
+  def test_sort_empty_tree
+    bst = BinarySearchTree.new
+    numbers = []
+    bst.build_tree(numbers)
+    assert_equal [], bst.sort
+  end
+
+  def test_sort_one_number
+    bst = BinarySearchTree.new
+    numbers = [23]
+    bst.build_tree(numbers)
+    assert_equal [23], bst.sort
+  end
+
   def test_sort_two_numbers
     bst = BinarySearchTree.new
     numbers = [87, 23]

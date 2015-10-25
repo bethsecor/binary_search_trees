@@ -23,6 +23,7 @@ class Tree
   end
 
   def sort(sorted_array = [])
+    return sorted_array if head.nil?
     sorted_array << head.data
     return sorted_array if head.rightlink.nil? && head.leftlink.nil?
     if head.rightlink
