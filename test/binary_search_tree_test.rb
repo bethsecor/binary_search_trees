@@ -135,6 +135,36 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal 120, bst.maximum
   end
 
+  #####
+
+  def test_minimum_tree_one_number
+    bst = BinarySearchTree.new
+    numbers = [3]
+    bst.build_tree(numbers)
+    assert_equal 3, bst.minimum
+  end
+
+  def test_minimum_tree_two_numbers
+    bst = BinarySearchTree.new
+    numbers = [6, 3]
+    bst.build_tree(numbers)
+    assert_equal 3, bst.minimum
+  end
+
+  def test_minimum_tree_two_numbers_max_head
+    bst = BinarySearchTree.new
+    numbers = [4, 7]
+    bst.build_tree(numbers)
+    assert_equal 4, bst.minimum
+  end
+
+  def test_minimum_tree_three_numbers
+    bst = BinarySearchTree.new
+    numbers = [7, 4, 10]
+    bst.build_tree(numbers)
+    assert_equal 4, bst.minimum
+  end
+
   def test_minimum_single_digits
     bst = BinarySearchTree.new
     numbers = [3, 6, 4, 5, 8, 9]
