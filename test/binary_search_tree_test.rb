@@ -18,9 +18,28 @@ class BinarySearchTreeTest < Minitest::Test
     assert bst.respond_to?(:minimum)
   end
 
-  def test_build_tree_structure_correct
-    skip
+  def test_build_tree_one_number
     bst = BinarySearchTree.new
+    numbers = [87]
+    tree = bst.build_tree(numbers)
+    assert_equal 87, tree.head.data
+  end
+
+  def test_build_tree_two_numbers
+    bst = BinarySearchTree.new
+    numbers = [87, 54]
+    tree = bst.build_tree(numbers)
+    assert_equal 87, tree.head.data
+    assert_equal 54, tree.head.leftlink.data
+  end
+
+  def test_build_tree_three_numbers
+    bst = BinarySearchTree.new
+    numbers = [87, 54, 99]
+    tree = bst.build_tree(numbers)
+    assert_equal 87, tree.head.data
+    assert_equal 54, tree.head.leftlink.data
+    assert_equal 99, tree.head.rightlink.data
   end
 
   def test_include_head?
@@ -180,16 +199,16 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal [2, 3, 5, 6], bst.sort
   end
 
-  def test_sort
+  def test_sort_shuffled
     bst = BinarySearchTree.new
-    numbers = [3, 6, 4, 5, 8, 9]
+    numbers = [3, 6, 4, 5, 8, 9].shuffle
     bst.build_tree(numbers)
     assert_equal [3, 4, 5, 6, 8, 9], bst.sort
   end
 
-  def test_sort_balanced_tree
+  def test_sort_balanced_tree_shuffled
     bst = BinarySearchTree.new
-    numbers = [87, 54, 99, 43, 120, 66, 101]
+    numbers = [87, 54, 99, 43, 120, 66, 101].shuffle
     bst.build_tree(numbers)
     assert_equal [43, 54, 66, 87, 99, 101, 120], bst.sort
   end
