@@ -26,16 +26,16 @@ class BinarySearchTree
     @tree.include?(element)
   end
 
+  def sort
+    @tree.sort
+  end
+
   def sort_file_data_to_file
     file_data = @reader.read.split("\n")
-    file_tree = tree(file_data)
+    file_tree = build_tree(file_data)
     sorted_file_data = file_tree.sort
     sorted_file_data.join("\n")
     @writer.write(sorted_file_data)
-  end
-
-  def sort
-    @tree.sort
   end
 
   def insert(element)
@@ -56,7 +56,7 @@ class BinarySearchTree
 end
 
 bst = BinarySearchTree.new
-# bst.sort_file_data_to_file
-numbers = [87,99,54,43,66,77]
-bst_numbers = bst.build_tree(numbers)
+bst.sort_file_data_to_file
+# numbers = [87,99,54,43,66,77]
+# bst_numbers = bst.build_tree(numbers)
 # binding.pry

@@ -257,6 +257,19 @@ class NodeTest < Minitest::Test
     refute node1.include?(480)
   end
 
+  def test_sort_one_node
+    node1 = Node.new(48)
+    assert_equal [0, 1, 48], node1.sort([0, 1])
+  end
+
+  def test_sort_two_nodes
+    node1 = Node.new(48)
+    node2 = Node.new(86)
+    node1.insert(node2)
+    assert_equal [0, 48, 86], node1.sort([0])
+
+  end
+
   def test_depth_of_level_two
     node1 = Node.new(48)
     node2 = Node.new(36)

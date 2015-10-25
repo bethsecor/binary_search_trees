@@ -12,13 +12,13 @@ class BinarySearchTreeTest < Minitest::Test
     assert bst.respond_to?(:include?)
     assert bst.respond_to?(:sort)
     assert bst.respond_to?(:sort_file_data_to_file)
-
+    assert bst.respond_to?(:insert)
     assert bst.respond_to?(:depth_of)
     assert bst.respond_to?(:maximum)
     assert bst.respond_to?(:minimum)
   end
 
-  def test_tree_structure_correct
+  def test_build_tree_structure_correct
     skip
     bst = BinarySearchTree.new
   end
@@ -122,6 +122,62 @@ class BinarySearchTreeTest < Minitest::Test
     numbers = [3, 6, 4, 5, 8, 9, 10]
     bst.build_tree(numbers)
     assert_equal 4, bst.depth_of(10)
+  end
+
+  def test_sort_two_numbers
+    bst = BinarySearchTree.new
+    numbers = [87, 23]
+    bst.build_tree(numbers)
+    assert_equal [23, 87], bst.sort
+  end
+
+  def test_sort_two_numbers_sorted
+    bst = BinarySearchTree.new
+    numbers = [1, 5]
+    bst.build_tree(numbers)
+    assert_equal [1, 5], bst.sort
+  end
+
+  def test_sort_three_numbers
+    bst = BinarySearchTree.new
+    numbers = [5, 6, 2]
+    bst.build_tree(numbers)
+    assert_equal [2, 5, 6], bst.sort
+  end
+
+  def test_sort_three_numbers_sorted
+    bst = BinarySearchTree.new
+    numbers = [1, 3, 5]
+    bst.build_tree(numbers)
+    assert_equal [1, 3, 5], bst.sort
+  end
+
+  def test_sort_three_numbers_reversed
+    bst = BinarySearchTree.new
+    numbers = [5, 3, 1]
+    bst.build_tree(numbers)
+    assert_equal [1, 3, 5], bst.sort
+  end
+
+  def test_sort_four_numbers
+    bst = BinarySearchTree.new
+    numbers = [5, 3, 6, 2]
+    bst.build_tree(numbers)
+    assert_equal [2, 3, 5, 6], bst.sort
+  end
+
+  def test_sort_four_numbers_sorted
+    bst = BinarySearchTree.new
+    numbers = [2, 3, 5, 6]
+    bst.build_tree(numbers)
+    assert_equal [2, 3, 5, 6], bst.sort
+  end
+
+  def test_sort_four_numbers_reversed
+    bst = BinarySearchTree.new
+    numbers = [6, 5, 3, 2]
+    bst.build_tree(numbers)
+    assert_equal [2, 3, 5, 6], bst.sort
   end
 
   def test_sort
