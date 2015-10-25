@@ -38,4 +38,14 @@ class Tree
     end
   end
 
+  def depth_of(element)
+    if element == head.data
+      0
+    elsif element < head.data
+      head.leftlink.depth_of(element)
+    else
+      head.rightlink.depth_of(element)
+    end
+  end
+
 end

@@ -1,3 +1,5 @@
+require 'pry'
+
 class Node
   attr_accessor :data, :leftlink, :rightlink
 
@@ -22,7 +24,7 @@ class Node
   end
 
   def include?(element)
-    if data == element
+    if element == data
       true
     elsif element < data
       return false if leftlink.nil?
@@ -48,6 +50,18 @@ class Node
       data
     else
       leftlink.minimum
+    end
+  end
+
+  def depth_of(element, counter = 0)
+    counter += 1
+
+    if element == data
+      counter
+    elsif element < data
+      leftlink.depth_of(element, counter)
+    else # elsif element > data
+      rightlink.depth_of(element, counter)
     end
   end
 end

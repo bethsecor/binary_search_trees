@@ -50,10 +50,11 @@ class BinarySearchTree
   def sort
   end
 
-  def insert
+  def insert # YOU DID THIS. CONGRATS.
   end
 
-  def depth_of
+  def depth_of(element)
+    @tree.depth_of(element)
   end
 
   def maximum

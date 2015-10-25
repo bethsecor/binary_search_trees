@@ -80,4 +80,36 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal 43, bst.minimum
   end
 
+  def test_depth_of_head
+    bst = BinarySearchTree.new
+    numbers = [3, 6, 4, 5, 8, 9]
+    bst.build_tree(numbers)
+    assert_equal 0, bst.depth_of(3)
+  end
+
+  def test_depth_of_level_one
+    bst = BinarySearchTree.new
+    numbers = [3, 6, 4, 5, 8, 9]
+    bst.build_tree(numbers)
+    assert_equal 1, bst.depth_of(6)
+  end
+
+  def test_depth_of_level_two
+    bst = BinarySearchTree.new
+    numbers = [3, 6, 4, 5, 8, 9]
+    bst.build_tree(numbers)
+    assert_equal 2, bst.depth_of(4)
+    assert_equal 2, bst.depth_of(8)
+  end
+
+  def test_depth_of_level_three
+    bst = BinarySearchTree.new
+    numbers = [3, 6, 4, 5, 8, 9]
+    bst.build_tree(numbers)
+    assert_equal 3, bst.depth_of(5)
+    assert_equal 3, bst.depth_of(9)
+  end
+
+
+
 end

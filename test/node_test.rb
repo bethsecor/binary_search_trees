@@ -111,4 +111,13 @@ class NodeTest < Minitest::Test
     assert_equal 16, node1.rightlink.data
     assert_equal 14, node1.rightlink.leftlink.data
   end
+
+  def test_depth_of_level_two
+    node1 = Node.new(48)
+    node2 = Node.new(36)
+    node3 = Node.new(24)
+    node4 = Node.new(12)
+    node1.push(node2).push(node3).push(node4)
+    assert_equal 2, node1.depth_of(24)
+  end
 end
