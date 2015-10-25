@@ -77,6 +77,78 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal 21, tree.head.leftlink.leftlink.data
   end
 
+  def test_build_tree_four_numbers_right
+    bst = BinarySearchTree.new
+    numbers = [87, 54, 99, 120]
+    tree = bst.build_tree(numbers)
+    assert_equal 87, tree.head.data
+    assert_equal 54, tree.head.leftlink.data
+    assert_equal 99, tree.head.rightlink.data
+    assert_equal 120, tree.head.rightlink.rightlink.data
+  end
+
+  def test_build_tree_five_numbers_right
+    bst = BinarySearchTree.new
+    numbers = [87, 54, 99, 120, 96]
+    tree = bst.build_tree(numbers)
+    assert_equal 87, tree.head.data
+    assert_equal 54, tree.head.leftlink.data
+    assert_equal 99, tree.head.rightlink.data
+    assert_equal 120, tree.head.rightlink.rightlink.data
+    assert_equal 96, tree.head.rightlink.leftlink.data
+  end
+
+  def test_build_tree_five_numbers_left
+    bst = BinarySearchTree.new
+    numbers = [87, 54, 99, 66, 44]
+    tree = bst.build_tree(numbers)
+    assert_equal 87, tree.head.data
+    assert_equal 54, tree.head.leftlink.data
+    assert_equal 99, tree.head.rightlink.data
+    assert_equal 66, tree.head.leftlink.rightlink.data
+    assert_equal 44, tree.head.leftlink.leftlink.data
+  end
+
+  def test_build_tree_seven_numbers_balanced
+    bst = BinarySearchTree.new
+    numbers = [87, 54, 99, 66, 44, 120, 96]
+    tree = bst.build_tree(numbers)
+    assert_equal 87, tree.head.data
+    assert_equal 54, tree.head.leftlink.data
+    assert_equal 99, tree.head.rightlink.data
+    assert_equal 66, tree.head.leftlink.rightlink.data
+    assert_equal 44, tree.head.leftlink.leftlink.data
+    assert_equal 120, tree.head.rightlink.rightlink.data
+    assert_equal 96, tree.head.rightlink.leftlink.data
+  end
+
+  def test_build_tree_seven_numbers_chain_right
+    bst = BinarySearchTree.new
+    numbers = [1, 2, 3, 4, 5, 6, 7]
+    tree = bst.build_tree(numbers)
+    assert_equal 1, tree.head.data
+    assert_equal 2, tree.head.rightlink.data
+    assert_equal 3, tree.head.rightlink.rightlink.data
+    assert_equal 4, tree.head.rightlink.rightlink.rightlink.data
+    assert_equal 5, tree.head.rightlink.rightlink.rightlink.rightlink.data
+    assert_equal 6, tree.head.rightlink.rightlink.rightlink.rightlink.rightlink.data
+    assert_equal 7, tree.head.rightlink.rightlink.rightlink.rightlink.rightlink.rightlink.data
+  end
+
+  def test_build_tree_seven_numbers_chain_left
+    bst = BinarySearchTree.new
+    numbers = [7, 6, 5, 4, 3, 2, 1]
+    tree = bst.build_tree(numbers)
+    assert_equal 7, tree.head.data
+    assert_equal 6, tree.head.leftlink.data
+    assert_equal 5, tree.head.leftlink.leftlink.data
+    assert_equal 4, tree.head.leftlink.leftlink.leftlink.data
+    assert_equal 3, tree.head.leftlink.leftlink.leftlink.leftlink.data
+    assert_equal 2, tree.head.leftlink.leftlink.leftlink.leftlink.leftlink.data
+    assert_equal 1, tree.head.leftlink.leftlink.leftlink.leftlink.leftlink.leftlink.data
+  end
+
+
   def test_include_head?
     bst = BinarySearchTree.new
     numbers = [87]
