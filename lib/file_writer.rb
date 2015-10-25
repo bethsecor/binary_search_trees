@@ -4,6 +4,6 @@ class FileWriter
     File.open(to_file, 'w') do |file|
       file.puts output
     end
-    puts "Created '#{to_file}' containing #{output.length} characters."
+    puts "Created '#{to_file}' containing #{output.length} sorted elements."
   end
 end
