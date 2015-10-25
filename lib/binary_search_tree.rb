@@ -14,8 +14,16 @@ class BinarySearchTree
     @writer = FileWriter.new
   end
 
+  def is_a_number?(char)
+    char.to_i != 0 || char == "0"
+  end
+
   def insert(element)
-    @tree.insert(element.to_i)
+    if is_a_number?(element)
+      @tree.insert(element.to_i)
+    else
+      @tree.insert(element)
+    end
   end
 
   def build_tree(data)

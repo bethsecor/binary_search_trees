@@ -18,6 +18,16 @@ class BinarySearchTreeTest < Minitest::Test
     assert bst.respond_to?(:minimum)
   end
 
+  def test_is_a_number?
+    bst = BinarySearchTree.new
+    char1 = "0"
+    char2 = "a"
+    char3 = "7"
+    assert bst.is_a_number?(char1)
+    refute bst.is_a_number?(char2)
+    assert bst.is_a_number?(char3)
+  end
+
   def test_build_tree_empty
     bst = BinarySearchTree.new
     numbers = []
@@ -55,6 +65,16 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal 87, tree.head.data
     assert_equal 54, tree.head.leftlink.data
     assert_equal 99, tree.head.rightlink.data
+  end
+
+  def test_build_tree_four_numbers_left
+    bst = BinarySearchTree.new
+    numbers = [87, 54, 99, 21]
+    tree = bst.build_tree(numbers)
+    assert_equal 87, tree.head.data
+    assert_equal 54, tree.head.leftlink.data
+    assert_equal 99, tree.head.rightlink.data
+    assert_equal 21, tree.head.leftlink.leftlink.data
   end
 
   def test_include_head?
