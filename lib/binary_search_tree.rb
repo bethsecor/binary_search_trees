@@ -14,6 +14,10 @@ class BinarySearchTree
     @writer = FileWriter.new
   end
 
+  def insert(element)
+    @tree.insert(element.to_i)
+  end
+
   def build_tree(data)
     @tree = Tree.new
     data.each do |element|
@@ -36,10 +40,6 @@ class BinarySearchTree
     sorted_file_data = file_tree.sort
     sorted_file_data.join("\n")
     @writer.write(sorted_file_data)
-  end
-
-  def insert(element)
-    @tree.insert(element.to_i)
   end
 
   def depth_of(element)
