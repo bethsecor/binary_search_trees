@@ -236,7 +236,7 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal 1, bst.depth_of(1)
   end
 
-  def test_depth_of_level_two
+  def test_depth_of_level_two_small_tree
     bst = BinarySearchTree.new
     numbers = [3, 6, 4, 5, 8, 9, 1]
     bst.build_tree(numbers)
@@ -244,9 +244,9 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal 2, bst.depth_of(8)
   end
 
-  def test_depth_of_level_three
+  def test_depth_of_level_three_small_tree
     bst = BinarySearchTree.new
-    numbers = [3, 6, 4, 5, 8, 9]
+    numbers = [3, 6, 4, 5, 8, 9, 1]
     bst.build_tree(numbers)
     assert_equal 3, bst.depth_of(5)
     assert_equal 3, bst.depth_of(9)
@@ -257,6 +257,13 @@ class BinarySearchTreeTest < Minitest::Test
     numbers = [3, 6, 4, 5, 8, 9, 10]
     bst.build_tree(numbers)
     assert_equal 4, bst.depth_of(10)
+  end
+
+  def test_depth_of_level_five
+    bst = BinarySearchTree.new
+    numbers = [3, 6, 4, 5, 8, 9, 10, 20]
+    bst.build_tree(numbers)
+    assert_equal 5, bst.depth_of(20)
   end
 
   def test_sort_two_numbers
