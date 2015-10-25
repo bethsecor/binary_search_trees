@@ -1,5 +1,8 @@
 require './lib/node'
 
+# Tree can insert an element, sort them, and has
+# various descriptive methods for the tree. It
+# depends on the Node class.
 class Tree
   attr_reader :head
 
@@ -62,5 +65,4 @@ class Tree
       head.rightlink.depth_of(element)
     end
   end
-
 end

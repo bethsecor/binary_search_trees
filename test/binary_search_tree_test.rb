@@ -18,14 +18,14 @@ class BinarySearchTreeTest < Minitest::Test
     assert bst.respond_to?(:minimum)
   end
 
-  def test_is_a_number?
+  def test_a_number?
     bst = BinarySearchTree.new
     char1 = "0"
     char2 = "a"
     char3 = "7"
-    assert bst.is_a_number?(char1)
-    refute bst.is_a_number?(char2)
-    assert bst.is_a_number?(char3)
+    assert bst.a_number?(char1)
+    refute bst.a_number?(char2)
+    assert bst.a_number?(char3)
   end
 
   def test_build_tree_empty

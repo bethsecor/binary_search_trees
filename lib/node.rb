@@ -1,5 +1,5 @@
-require 'pry'
-
+# Node can insert an element, and has various descriptive
+# methods for the sub-tree.
 class Node
   attr_accessor :data, :leftlink, :rightlink
 
@@ -40,11 +40,11 @@ class Node
   def sort(sorted_array)
     return sorted_array if rightlink.nil? && leftlink.nil?
     if rightlink
-      sorted_array.insert(sorted_array.index(data)+1,rightlink.data)
+      sorted_array.insert(sorted_array.index(data) + 1, rightlink.data)
       rightlink.sort(sorted_array)
     end
     if leftlink
-      sorted_array.insert(sorted_array.index(data),leftlink.data)
+      sorted_array.insert(sorted_array.index(data), leftlink.data)
       leftlink.sort(sorted_array)
     end
     sorted_array
@@ -67,7 +67,7 @@ class Node
   end
 
   def depth_of(element, counter = 0)
-    return nil if !include?(element)
+    return nil unless include?(element)
 
     counter += 1
 

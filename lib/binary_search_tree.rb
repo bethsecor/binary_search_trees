@@ -4,6 +4,9 @@ require './lib/file_reader'
 require './lib/file_writer'
 require 'pry'
 
+# Binary Search Tree can build a tree, insert an element, sort them,
+# and has various descriptive methods for the tree. Can also output
+# the sorted elements to a file from an input file.
 class BinarySearchTree
   attr_reader :file_reader
   attr_writer :file_writer
@@ -14,12 +17,12 @@ class BinarySearchTree
     @writer = FileWriter.new
   end
 
-  def is_a_number?(char)
-    char.to_i != 0 || char == "0"
+  def a_number?(char)
+    char.to_i != 0 || char == '0'
   end
 
   def insert(element)
-    if is_a_number?(element)
+    if a_number?(element)
       @tree.insert(element.to_i)
     else
       @tree.insert(element)
