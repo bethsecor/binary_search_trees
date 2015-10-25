@@ -135,8 +135,6 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal 120, bst.maximum
   end
 
-  #####
-
   def test_minimum_tree_one_number
     bst = BinarySearchTree.new
     numbers = [3]
@@ -179,30 +177,68 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal 43, bst.minimum
   end
 
-  def test_depth_of_non_element
+  def test_refute_depth_of_non_element
     bst = BinarySearchTree.new
     numbers = [3, 6, 4, 5, 8, 9]
     bst.build_tree(numbers)
-    assert_equal nil, bst.depth_of(7)
+    refute bst.depth_of(7)
+    refute bst.depth_of(30)
+    refute bst.depth_of(99)
   end
 
-  def test_depth_of_head
+  def test_depth_of_head_one_number
+    bst = BinarySearchTree.new
+    numbers = [3]
+    bst.build_tree(numbers)
+    assert_equal 0, bst.depth_of(3)
+  end
+
+  def test_depth_of_head_two_numbers
+    bst = BinarySearchTree.new
+    numbers = [3, 6]
+    bst.build_tree(numbers)
+    assert_equal 0, bst.depth_of(3)
+  end
+
+  def test_depth_of_head_three_numbers
+    bst = BinarySearchTree.new
+    numbers = [3, 6, 8]
+    bst.build_tree(numbers)
+    assert_equal 0, bst.depth_of(3)
+  end
+
+  def test_depth_of_head_small_tree
     bst = BinarySearchTree.new
     numbers = [3, 6, 4, 5, 8, 9]
     bst.build_tree(numbers)
     assert_equal 0, bst.depth_of(3)
   end
 
-  def test_depth_of_level_one
+  def test_depth_of_level_one_two_numbers_rightlink
     bst = BinarySearchTree.new
-    numbers = [3, 6, 4, 5, 8, 9]
+    numbers = [3, 6]
     bst.build_tree(numbers)
     assert_equal 1, bst.depth_of(6)
   end
 
+  def test_depth_of_level_one_two_numbers_leftlink
+    bst = BinarySearchTree.new
+    numbers = [3, 1]
+    bst.build_tree(numbers)
+    assert_equal 1, bst.depth_of(1)
+  end
+
+  def test_depth_of_level_one_small_tree
+    bst = BinarySearchTree.new
+    numbers = [3, 6, 4, 5, 8, 9, 1]
+    bst.build_tree(numbers)
+    assert_equal 1, bst.depth_of(6)
+    assert_equal 1, bst.depth_of(1)
+  end
+
   def test_depth_of_level_two
     bst = BinarySearchTree.new
-    numbers = [3, 6, 4, 5, 8, 9]
+    numbers = [3, 6, 4, 5, 8, 9, 1]
     bst.build_tree(numbers)
     assert_equal 2, bst.depth_of(4)
     assert_equal 2, bst.depth_of(8)
