@@ -18,6 +18,13 @@ class BinarySearchTreeTest < Minitest::Test
     assert bst.respond_to?(:minimum)
   end
 
+  def test_build_tree_empty
+    bst = BinarySearchTree.new
+    numbers = []
+    tree = bst.build_tree(numbers)
+    assert_equal nil, tree.head
+  end
+
   def test_build_tree_one_number
     bst = BinarySearchTree.new
     numbers = [87]
@@ -25,12 +32,20 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal 87, tree.head.data
   end
 
-  def test_build_tree_two_numbers
+  def test_build_tree_two_numbers_leftlink
     bst = BinarySearchTree.new
     numbers = [87, 54]
     tree = bst.build_tree(numbers)
     assert_equal 87, tree.head.data
     assert_equal 54, tree.head.leftlink.data
+  end
+
+  def test_build_tree_two_numbers_rightlink
+    bst = BinarySearchTree.new
+    numbers = [32, 54]
+    tree = bst.build_tree(numbers)
+    assert_equal 32, tree.head.data
+    assert_equal 54, tree.head.rightlink.data
   end
 
   def test_build_tree_three_numbers
@@ -71,6 +86,41 @@ class BinarySearchTreeTest < Minitest::Test
     assert bst.include?(120)
   end
 
+  def test_maximum_tree_one_number
+    bst = BinarySearchTree.new
+    numbers = [3]
+    bst.build_tree(numbers)
+    assert_equal 3, bst.maximum
+  end
+
+  def test_maximum_tree_two_numbers
+    bst = BinarySearchTree.new
+    numbers = [3, 6]
+    bst.build_tree(numbers)
+    assert_equal 6, bst.maximum
+  end
+
+  def test_maximum_tree_two_numbers_max_head
+    bst = BinarySearchTree.new
+    numbers = [7, 4]
+    bst.build_tree(numbers)
+    assert_equal 7, bst.maximum
+  end
+
+  def test_maximum_tree_three_numbers
+    bst = BinarySearchTree.new
+    numbers = [7, 4, 10]
+    bst.build_tree(numbers)
+    assert_equal 10, bst.maximum
+  end
+
+  def test_maximum_tree_three_numbers_max_head
+    bst = BinarySearchTree.new
+    numbers = [7, 4, 2]
+    bst.build_tree(numbers)
+    assert_equal 7, bst.maximum
+  end
+
   def test_maximum_single_digits
     bst = BinarySearchTree.new
     numbers = [3, 6, 4, 5, 8, 9]
@@ -78,7 +128,7 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal 9, bst.maximum
   end
 
-  def test_maximum_big_numbers
+  def test_maximum_bigger_numbers
     bst = BinarySearchTree.new
     numbers = [87, 54, 99, 43, 120, 66, 101]
     bst.build_tree(numbers)
