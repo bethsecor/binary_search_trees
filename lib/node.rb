@@ -1,5 +1,3 @@
-require 'pry'
-
 # Node can insert an element, and has various descriptive
 # methods for the sub-tree.
 class Node
@@ -83,7 +81,6 @@ class Node
   end
 
   def number_of_leaves(leaf_counter = 0)
-    # binding.pry
     if rightlink.nil? && leftlink.nil?
       leaf_counter += 1
     else

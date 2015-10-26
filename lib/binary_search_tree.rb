@@ -2,7 +2,6 @@ require './lib/node'
 require './lib/tree'
 require './lib/file_reader'
 require './lib/file_writer'
-require 'pry'
 
 # Binary Search Tree can build a tree, insert an element, sort them,
 # and has various descriptive methods for the tree. Can also output
@@ -76,6 +75,3 @@ end
 
 bst = BinarySearchTree.new
 bst.sort_file_data_to_file
-# numbers = [87,99,54,43,66,77]
-# bst_numbers = bst.build_tree(numbers)
-# binding.pry

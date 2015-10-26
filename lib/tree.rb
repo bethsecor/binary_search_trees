@@ -1,5 +1,4 @@
 require './lib/node'
-require 'pry'
 
 # Tree can insert an element, sort them, and has
 # various descriptive methods for the tree. It
