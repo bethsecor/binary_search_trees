@@ -552,19 +552,19 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal 1, tree.number_of_leaves
   end
 
-  def test_tree_three_numbers_has_two_leaves
-    skip
-    bst = BinarySearchTree.new
-    numbers = [130, 99, 156]
-    tree = bst.build_tree(numbers)
-    assert_equal 2, tree.number_of_leaves
-  end
-
-  def test_tree_thirteen_numbers_balanced_has_six_leaves
-    skip
-    bst = BinarySearchTree.new
-    numbers = [87, 54, 99, 66, 44, 120, 96, 16, 48, 60, 70, 90, 98, 100, 130]
-    tree = bst.build_tree(numbers)
-    assert_equal 6, tree.number_of_leaves
-  end
+  # def test_tree_three_numbers_has_two_leaves
+  #   skip
+  #   bst = BinarySearchTree.new
+  #   numbers = [130, 99, 156]
+  #   tree = bst.build_tree(numbers)
+  #   assert_equal 2, tree.number_of_leaves
+  # end
+  #
+  # def test_tree_thirteen_numbers_balanced_has_six_leaves
+  #   skip
+  #   bst = BinarySearchTree.new
+  #   numbers = [87, 54, 99, 66, 44, 120, 96, 16, 48, 60, 70, 90, 98, 100, 130]
+  #   tree = bst.build_tree(numbers)
+  #   assert_equal 6, tree.number_of_leaves
+  # end
 end
