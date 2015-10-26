@@ -32,7 +32,11 @@ class BinarySearchTree
   def build_tree(data)
     @tree = Tree.new
     data.each do |element|
-      @tree.insert(element.to_i)
+      if a_number?(element)
+        @tree.insert(element.to_i)
+      else
+        @tree.insert(element)
+      end
     end
     @tree
   end
@@ -63,6 +67,10 @@ class BinarySearchTree
 
   def minimum
     @tree.minimum
+  end
+
+  def number_of_leaves
+    @tree.number_of_leaves
   end
 end
 

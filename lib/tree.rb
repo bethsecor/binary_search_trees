@@ -1,4 +1,5 @@
 require './lib/node'
+require 'pry'
 
 # Tree can insert an element, sort them, and has
 # various descriptive methods for the tree. It
@@ -63,6 +64,15 @@ class Tree
       head.leftlink.depth_of(element)
     else
       head.rightlink.depth_of(element)
+    end
+  end
+
+  def number_of_leaves
+    if head.rightlink.nil? && head.leftlink.nil?
+      1
+    else
+      head.rightlink.number_of_leaves if head.rightlink
+      head.leftlink.number_of_leaves if head.leftlink
     end
   end
 end

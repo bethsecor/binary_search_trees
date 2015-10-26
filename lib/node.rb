@@ -1,3 +1,5 @@
+require 'pry'
+
 # Node can insert an element, and has various descriptive
 # methods for the sub-tree.
 class Node
@@ -77,6 +79,16 @@ class Node
       leftlink.depth_of(element, counter)
     else
       rightlink.depth_of(element, counter)
+    end
+  end
+
+  def number_of_leaves(leaf_counter = 0)
+    # binding.pry
+    if rightlink.nil? && leftlink.nil?
+      leaf_counter += 1
+    else
+      rightlink.number_of_leaves if rightlink
+      leftlink.number_of_leaves if leftlink
     end
   end
 end

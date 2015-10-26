@@ -169,6 +169,38 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal 130, tree.head.rightlink.rightlink.rightlink.data
   end
 
+  def test_build_tree_one_letter
+    bst = BinarySearchTree.new
+    letters = ["a"]
+    tree = bst.build_tree(letters)
+    assert_equal "a", tree.head.data
+  end
+
+  def test_build_tree_two_letters_left
+    bst = BinarySearchTree.new
+    letters = ["g", "c"]
+    tree = bst.build_tree(letters)
+    assert_equal "g", tree.head.data
+    assert_equal "c", tree.head.leftlink.data
+  end
+
+  def test_build_tree_two_letters_right
+    bst = BinarySearchTree.new
+    letters = ["g", "k"]
+    tree = bst.build_tree(letters)
+    assert_equal "g", tree.head.data
+    assert_equal "k", tree.head.rightlink.data
+  end
+
+  def test_build_tree_three_letters_balanced
+    bst = BinarySearchTree.new
+    letters = ["g", "k", "d"]
+    tree = bst.build_tree(letters)
+    assert_equal "g", tree.head.data
+    assert_equal "k", tree.head.rightlink.data
+    assert_equal "d", tree.head.leftlink.data
+  end
+
   def test_include_head?
     bst = BinarySearchTree.new
     numbers = [87]
@@ -474,5 +506,35 @@ class BinarySearchTreeTest < Minitest::Test
     numbers = [87, 54, 99, 43, 120, 66, 101].shuffle
     bst.build_tree(numbers)
     assert_equal [43, 54, 66, 87, 99, 101, 120], bst.sort
+  end
+
+  def test_tree_one_number_has_one_leaf
+    bst = BinarySearchTree.new
+    numbers = [130]
+    tree = bst.build_tree(numbers)
+    assert_equal 1, tree.number_of_leaves
+  end
+
+  def test_tree_two_numbers_has_one_leaf
+    bst = BinarySearchTree.new
+    numbers = [130, 99]
+    tree = bst.build_tree(numbers)
+    assert_equal 1, tree.number_of_leaves
+  end
+
+  def test_tree_three_numbers_has_two_leaves
+    skip
+    bst = BinarySearchTree.new
+    numbers = [130, 99, 156]
+    tree = bst.build_tree(numbers)
+    assert_equal 2, tree.number_of_leaves
+  end
+
+  def test_tree_thirteen_numbers_balanced_has_six_leaves
+    skip
+    bst = BinarySearchTree.new
+    numbers = [87, 54, 99, 66, 44, 120, 96, 16, 48, 60, 70, 90, 98, 100, 130]
+    tree = bst.build_tree(numbers)
+    assert_equal 6, tree.number_of_leaves
   end
 end
