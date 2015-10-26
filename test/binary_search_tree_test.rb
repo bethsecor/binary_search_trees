@@ -201,6 +201,36 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal "d", tree.head.leftlink.data
   end
 
+  def test_thirteen_numbers_balanced_insert_one_number
+    bst = BinarySearchTree.new
+    numbers = [87, 54, 99, 66, 44, 120, 96, 16, 48, 60, 70, 90, 98, 100, 130]
+    tree = bst.build_tree(numbers)
+    bst.insert(280)
+    assert_equal 280, tree.head.rightlink.rightlink.rightlink.rightlink.data
+  end
+
+  def test_thirteen_numbers_balanced_insert_two_numbers
+    bst = BinarySearchTree.new
+    numbers = [87, 54, 99, 66, 44, 120, 96, 16, 48, 60, 70, 90, 98, 100, 130]
+    tree = bst.build_tree(numbers)
+    bst.insert(199)
+    bst.insert(127)
+    assert_equal 199, tree.head.rightlink.rightlink.rightlink.rightlink.data
+    assert_equal 127, tree.head.rightlink.rightlink.rightlink.leftlink.data
+  end
+
+  def test_thirteen_numbers_balanced_insert_three_numbers
+    bst = BinarySearchTree.new
+    numbers = [87, 54, 99, 66, 44, 120, 96, 16, 48, 60, 70, 90, 98, 100, 130]
+    tree = bst.build_tree(numbers)
+    bst.insert(199)
+    bst.insert(127)
+    bst.insert(12)
+    assert_equal 199, tree.head.rightlink.rightlink.rightlink.rightlink.data
+    assert_equal 127, tree.head.rightlink.rightlink.rightlink.leftlink.data
+    assert_equal 12, tree.head.leftlink.leftlink.leftlink.leftlink.data
+  end
+
   def test_include_head?
     bst = BinarySearchTree.new
     numbers = [87]
