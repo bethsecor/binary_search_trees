@@ -1,3 +1,5 @@
+# ruby ./test/node_test.rb
+
 gem 'minitest', '~> 5.0'
 require 'minitest/autorun'
 require 'minitest/pride'
@@ -257,20 +259,7 @@ class NodeTest < Minitest::Test
     refute node1.include?(480)
   end
 
-  def test_sort_one_node
-    node1 = Node.new(48)
-    assert_equal [0, 1, 48], node1.sort([0, 1])
-  end
-
-  def test_sort_two_nodes
-    node1 = Node.new(48)
-    node2 = Node.new(86)
-    node1.insert(node2)
-    assert_equal [0, 48, 86], node1.sort([0])
-
-  end
-
-  def test_depth_of_level_two
+  def test_depth_of_subtree
     node1 = Node.new(48)
     node2 = Node.new(36)
     node3 = Node.new(24)
@@ -280,5 +269,67 @@ class NodeTest < Minitest::Test
     assert_equal 2, node1.depth_of(36)
     assert_equal 3, node1.depth_of(24)
     assert_equal 4, node1.depth_of(12)
+  end
+
+  def test_one_node_maximum
+    node1 = Node.new(48)
+    assert_equal 48, node1.maximum
+  end
+
+  def test_two_node_maximum
+    node1 = Node.new(12)
+    node2 = Node.new(36)
+    node1.insert(node2)
+    assert_equal 36, node1.maximum
+  end
+
+  def test_head_maximum
+    node1 = Node.new(48)
+    node2 = Node.new(36)
+    node3 = Node.new(24)
+    node4 = Node.new(12)
+    [node2, node3, node4].each { |node| node1.insert(node) }
+    assert_equal 48, node1.maximum
+  end
+
+  def test_maximum
+    node1 = Node.new(48)
+    node2 = Node.new(36)
+    node3 = Node.new(24)
+    node4 = Node.new(12)
+    node5 = Node.new(58)
+    [node2, node3, node4, node5].each { |node| node1.insert(node) }
+    assert_equal 58, node1.maximum
+  end
+
+  def test_one_node_minimum
+    node1 = Node.new(48)
+    assert_equal 48, node1.minimum
+  end
+
+  def test_two_node_minimum
+    node1 = Node.new(36)
+    node2 = Node.new(10)
+    node1.insert(node2)
+    assert_equal 10, node1.minimum
+  end
+
+  def test_head_minimum
+    node1 = Node.new(2)
+    node2 = Node.new(36)
+    node3 = Node.new(24)
+    node4 = Node.new(12)
+    [node2, node3, node4].each { |node| node1.insert(node) }
+    assert_equal 2, node1.minimum
+  end
+
+  def test_minimum
+    node1 = Node.new(48)
+    node2 = Node.new(36)
+    node3 = Node.new(24)
+    node4 = Node.new(12)
+    node5 = Node.new(58)
+    [node2, node3, node4, node5].each { |node| node1.insert(node) }
+    assert_equal 12, node1.minimum
   end
 end

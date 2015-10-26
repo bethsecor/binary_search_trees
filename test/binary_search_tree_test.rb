@@ -148,6 +148,26 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal 1, tree.head.leftlink.leftlink.leftlink.leftlink.leftlink.leftlink.data
   end
 
+  def test_build_tree_thirteen_numbers_balanced
+    bst = BinarySearchTree.new
+    numbers = [87, 54, 99, 66, 44, 120, 96, 16, 48, 60, 70, 90, 98, 100, 130]
+    tree = bst.build_tree(numbers)
+    assert_equal 87, tree.head.data
+    assert_equal 54, tree.head.leftlink.data
+    assert_equal 99, tree.head.rightlink.data
+    assert_equal 66, tree.head.leftlink.rightlink.data
+    assert_equal 44, tree.head.leftlink.leftlink.data
+    assert_equal 120, tree.head.rightlink.rightlink.data
+    assert_equal 96, tree.head.rightlink.leftlink.data
+    assert_equal 16, tree.head.leftlink.leftlink.leftlink.data
+    assert_equal 48, tree.head.leftlink.leftlink.rightlink.data
+    assert_equal 60, tree.head.leftlink.rightlink.leftlink.data
+    assert_equal 70, tree.head.leftlink.rightlink.rightlink.data
+    assert_equal 90, tree.head.rightlink.leftlink.leftlink.data
+    assert_equal 98, tree.head.rightlink.leftlink.rightlink.data
+    assert_equal 100, tree.head.rightlink.rightlink.leftlink.data
+    assert_equal 130, tree.head.rightlink.rightlink.rightlink.data
+  end
 
   def test_include_head?
     bst = BinarySearchTree.new
@@ -455,6 +475,4 @@ class BinarySearchTreeTest < Minitest::Test
     bst.build_tree(numbers)
     assert_equal [43, 54, 66, 87, 99, 101, 120], bst.sort
   end
-
-
 end
